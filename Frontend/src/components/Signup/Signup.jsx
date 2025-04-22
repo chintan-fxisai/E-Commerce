@@ -42,7 +42,14 @@ function Signup() {
 
   return (
 
-    <Container component={'section'}
+   <Box
+   sx={{
+    height:"100%",
+    width:"100%",
+    bgcolor:"darkgrey"
+   }}>
+    
+     <Container component={'section'}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -197,6 +204,7 @@ function Signup() {
 
       </Box>
     </Container>
+   </Box>
 
   )
 }
