@@ -19,8 +19,6 @@ export default function Login() {
 
   const handlePasswordVisibilityClick = () => setPasswordVisible(!passwordVisible)
 
-  
-
   const onSubmit = (data) => {
     setLoading(true)
     userLogin(data)
@@ -33,15 +31,23 @@ export default function Login() {
         localStorage.setItem("refreshToken", token.refresh)
         
         setTimeout(() => {
-          navigate("/todo")
+          navigate("/home")
         },1500)
       })
   }
 
-
   return (
 
-    <Container component={'section'}
+    <Box
+    sx={
+      {
+        height:"100%",
+        width:"100%",
+        bgcolor:'darkgrey'
+      }
+
+    }>
+      <Container component={'section'}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -166,6 +172,7 @@ export default function Login() {
 
       </Box>
     </Container>
+    </Box>
 
   )
 }

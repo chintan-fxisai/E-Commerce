@@ -1,5 +1,5 @@
 from django.contrib import admin
-from user.models import User
+from account.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin 
 
 # Register your models here.

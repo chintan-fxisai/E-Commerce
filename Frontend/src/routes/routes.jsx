@@ -4,9 +4,9 @@ import PublicRoute from './publicRoute';
 import PrivateRoute from './privateRoutes';
 import Login from '../components/Login/Login'
 import Signup from '../components/Signup/Signup';
-import Todo from '../components/Todo/todo'
 import Forgot from '../components/Forgot/Forgot';
 import ResetPassword from '../components/Forgot/ResetPassword'
+import Layout from '../components/Layout/Layout';
 
 function routes() {
     return (
@@ -16,12 +16,6 @@ function routes() {
                     <PublicRoute>
                         <Login />
                     </PublicRoute>
-                } />
-
-                <Route path="/todo" element={
-                    <PrivateRoute>
-                        <Todo />
-                    </PrivateRoute>
                 } />
 
                 <Route path="/login" element={
@@ -45,8 +39,11 @@ function routes() {
                         <ResetPassword />
                     </PublicRoute>
                 } />
-
-                <Route path='/test' element={<Todo />} />
+                <Route path="/home" element={
+                    <PrivateRoute>
+                        <Layout />
+                    </PrivateRoute>
+                } />
             </Routes>
         </>
     );

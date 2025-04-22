@@ -7,7 +7,7 @@ function publicRoute({children}) {
     const access_token = localStorage.getItem("authToken")
 
     if(access_token){
-        return <Navigate to="/todo" />
+        return <Navigate to="/home" />
     }else{
         return children || <Outlet/>
     }
