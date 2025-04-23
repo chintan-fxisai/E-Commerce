@@ -30,22 +30,21 @@ function Navbar() {
 
 
   return (
-    <Container component="section" className="mainContainer" 
-    sx={{position:'fixed'}} >
+    // <Container component="section" className="mainContainer" maxWidth='lg'
+    // sx={{position:'fixed'}} >
 
       <AppBar position="fixed"
-        elevation={0}
         sx={{
           py: 2,
           color: "black",
           bgcolor: "white"
         }}>
         <Container maxWidth="lg">
-          <Toolbar
+          <Toolbar disableGutters
           sx={{
             justifyContent:'space-between'
           }}>
-            <Box>
+            <Box sx={{cursor:'pointer'}}>
               <img src="./../../public/logo.png" alt="img" />
             </Box>
 
@@ -76,7 +75,7 @@ function Navbar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </Container>
+    // </Container>
   )
 }
 
