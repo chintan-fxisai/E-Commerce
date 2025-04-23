@@ -2,6 +2,18 @@
     display: block;
 }
 
-.hero-img img{
+.hero-img{
     width: 350px;
+}
+
+.hero-img img{
+    width: 100%;
+}
+
+.category-img{
+    width: 400px
+}
+
+.category-img img{
+    width: 100%;
 }
