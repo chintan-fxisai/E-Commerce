@@ -51,7 +51,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'email', 'name']
 
 
-
 class UserSendPasswordResetEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
 

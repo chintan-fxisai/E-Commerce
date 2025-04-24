@@ -28,7 +28,6 @@ class UserRegistrationView(APIView):
             user = serializer.save()
             token = get_tokens_for_user(user)  #Token generated when user created
             return Response({"token": token, "msg": "Registrations Successfull !!!"}, status=status.HTTP_201_CREATED)
-
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
 
@@ -43,7 +42,7 @@ class UserLoginview(APIView):
             token = get_tokens_for_user(user)
             if user is not None:
                 return Response({"token":token, "msg":"Login SuccessFull!!"}, status=status.HTTP_200_OK)
-            else: 
+            else:
                 return Response({'errors':{'non_field_errors':['Credentials are Not valid!!']}}, status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
