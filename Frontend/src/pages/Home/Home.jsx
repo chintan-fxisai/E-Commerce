@@ -1,9 +1,11 @@
-import React from 'react'
-import './Home.css'
-import { Box, Container, Typography, Grid } from '@mui/material'
+import React from 'react';
+import './Home.css';
+import { Box, Container, Typography, Grid } from '@mui/material';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import HeroSlide from './HeroSlide'
+import HeroSlide from './HeroSlide';
+import CategoryItem from './CategoryItem'
+import ShopItem from './ShopItem';
 
 function Home() {
   return (
@@ -16,15 +18,15 @@ function Home() {
         mt: 15
       }}>
 
+      {/* Hero section */}
       {<HeroSlide />}
 
 
       {/* Category Section */}
-      <Box className='mtb-120'>
+      <Box className='ptb-120'>
 
         <Typography variant="h2" color="initial"
           sx={{
-            textAlign: 'center',
             fontSize: 42,
             mb: 2,
           }}>
@@ -33,9 +35,8 @@ function Home() {
 
         <Typography variant="body1" color="initial"
           sx={{
-            textAlign: 'center',
             fontSize: 18,
-            mb: 8,
+            mb: 5,
           }}
         >
           Category we offer for the variety of products
@@ -43,46 +44,26 @@ function Home() {
 
         <Grid container spacing={5}>
 
-          <Grid item size={{ lg: 4 }}>
-            <Box className="category-img">
-              <img src="./../../public/category3.jpg" alt="img" />
-            </Box>
-            <Typography variant="h5" color="initial">
-              Menswear
-            </Typography>
-            <Typography variant="body1" color="initial"
-            
-            >Shop Now</Typography>
-          </Grid>
+          <CategoryItem />
 
-          <Grid item size={{ lg: 4 }}>
-            <Box className="category-img">
-              <img src="./../../public/category2.jpg" alt="img" />
-            </Box>
-            <Typography variant="h5" color="initial"
-              sx={{
-              }}>
-              Accesories
-            </Typography>
-          </Grid>
-
-          <Grid item size={{ lg: 4 }}>
-            <Box className="category-img">
-              <img src="./../../public/category1.jpg" alt="img" />
-            </Box>
-            <Typography variant="h5" color="initial"
-              sx={{
-              }}>
-              Sport Accesories
-            </Typography>
-          </Grid>
-
-          <Grid item size={{ lg: 4 }}></Grid>
-          <Grid item size={{ lg: 4 }}></Grid>
         </Grid>
 
 
       </Box>
+
+
+      {/* Shop Sections */}
+      <Box className='pb-120'>
+          <Typography variant="h2" color="initial"
+          fontSize={40}>
+            Shop Now
+          </Typography>
+          <Typography sx={{mb:4}} variant="body1" color="initial">Have a look to our variety of product</Typography>
+          <Grid container spacing={3}>
+            {<ShopItem/>}
+          </Grid>
+      </Box>
+
 
     </Container>
 

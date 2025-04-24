@@ -1,0 +1,10 @@
+.ft-link {
+    text-decoration: none;
+    color: #ffffff9e;
+    font-weight: 100;
+}
+
+.ft-link:hover{
+    color: aliceblue;
+    transition: 0.3s all ease;
+}

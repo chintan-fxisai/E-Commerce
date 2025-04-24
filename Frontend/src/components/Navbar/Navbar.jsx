@@ -45,7 +45,7 @@ function Navbar() {
             justifyContent:'space-between'
           }}>
             <Box sx={{cursor:'pointer'}}>
-              <img src="./../../public/logo.png" alt="img" />
+              <img src="./../../logo.png" alt="img" />
             </Box>
 
             <Stack spacing={5} direction={'row'}>

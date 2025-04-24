@@ -28,7 +28,7 @@ function HeroSlide() {
                         sx={{
                             alignItems: 'center'
                         }}>
-                        <Grid item size={{ lg: 6 }} >
+                        <Grid size={{ lg: 6 }} >
                             <Box className='hero-text'>
 
                                 <Typography variant="body1" color="initial"
@@ -70,14 +70,9 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid item size={{ lg: 6 }}  >
-                            <Box className='hero-img'
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: "center"
-                                }}
-                            >
-                                <img src="./../../public/model1.jpg" alt="img" />
+                        <Grid size={{ lg: 6 }}  justifyContent='end'>
+                            <Box className='hero-img'>
+                                <img src="/model1.jpg" alt="img" />
                             </Box>
                         </Grid>
 
@@ -90,7 +85,7 @@ function HeroSlide() {
                         sx={{
                             alignItems: 'center'
                         }}>
-                        <Grid item size={{ lg: 6 }} >
+                        <Grid  size={{ lg: 6 }} >
                             <Box className='hero-text'>
 
                                 <Typography variant="body1" color="initial"
@@ -132,14 +127,9 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid item size={{ lg: 6 }}  >
-                            <Box className='hero-img'
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: "center"
-                                }}
-                            >
-                                <img src="./../../public/model3.jpg" alt="img" />
+                        <Grid  size={{ lg: 6 }}  justifyContent='end'>
+                            <Box className='hero-img'>
+                                <img src="/model3.jpg" alt="img" />
                             </Box>
                         </Grid>
 
@@ -152,7 +142,7 @@ function HeroSlide() {
                         sx={{
                             alignItems: 'center'
                         }}>
-                        <Grid item size={{ lg: 6 }} >
+                        <Grid size={{ lg: 6 }} >
                             <Box className='hero-text'>
 
                                 <Typography variant="body1" color="initial"
@@ -194,14 +184,9 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid item size={{ lg: 6 }}  >
-                            <Box className='hero-img'
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: "center"
-                                }}
-                            >
-                                <img src="./../../public/model2.jpg" alt="img" />
+                        <Grid size={{ lg: 6 }}  justifyContent='end'>
+                            <Box className='hero-img'>
+                                <img src="/model2.jpg" alt="img" />
                             </Box>
                         </Grid>
 
