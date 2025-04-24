@@ -2,21 +2,21 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Fade, Grid, Typography } from '@mui/material'
 
 
 function HeroSlide() {
 
     const settings = {
         dots: true,
-        fade: true,
         infinite: true,
-        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        waitForAnimate: false,
-        autoplay:true,
-        
+        autoplay: true,
+        speed:5000,
+        autoplaySpeed: 2000,
+        fade: true,
+
     };
     return (
         <div className="slider-container">
@@ -70,7 +70,7 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid size={{ lg: 6 }}  justifyContent='end'>
+                        <Grid size={{ lg: 6 }} justifyContent='end'>
                             <Box className='hero-img'>
                                 <img src="/model1.jpg" alt="img" />
                             </Box>
@@ -85,7 +85,7 @@ function HeroSlide() {
                         sx={{
                             alignItems: 'center'
                         }}>
-                        <Grid  size={{ lg: 6 }} >
+                        <Grid size={{ lg: 6 }} >
                             <Box className='hero-text'>
 
                                 <Typography variant="body1" color="initial"
@@ -127,7 +127,7 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid  size={{ lg: 6 }}  justifyContent='end'>
+                        <Grid size={{ lg: 6 }} justifyContent='end'>
                             <Box className='hero-img'>
                                 <img src="/model3.jpg" alt="img" />
                             </Box>
@@ -184,7 +184,7 @@ function HeroSlide() {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid size={{ lg: 6 }}  justifyContent='end'>
+                        <Grid size={{ lg: 6 }} justifyContent='end'>
                             <Box className='hero-img'>
                                 <img src="/model2.jpg" alt="img" />
                             </Box>

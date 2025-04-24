@@ -59,6 +59,7 @@ function Home() {
             Shop Now
           </Typography>
           <Typography sx={{mb:4}} variant="body1" color="initial">Have a look to our variety of product</Typography>
+          
           <Grid container spacing={3}>
             {<ShopItem/>}
           </Grid>

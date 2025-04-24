@@ -6,49 +6,49 @@ function ShopItem() {
     const data = [
         {
             id: 1,
-            img: "/jeans.webp",
+            img: "/product-1.jpg",
             item: "Jeans",
             price: "₹" + '850.00',
         },
         {
             id: 2,
-            img: "/shirt.webp",
+            img: "/product-2.jpg",
             item: "Shirt",
             price: "₹" + '850.00',
         },
         {
             id: 3,
-            img: "/goggles.webp",
+            img: "/product-3.jpg",
             item: "Goggle",
             price: "₹" + '850.00',
         },
         {
             id: 4,
-            img: "/Tshirt.webp",
+            img: "/product-4.jpg",
             item: "Tshirt",
             price: "₹" + '850.00',
         },
         {
             id: 5,
-            img: "/shoes1.webp",
+            img: "/product-5.jpg",
             item: "Shoe",
             price: "₹" + '850.00',
         },
         {
             id: 6,
-            img: "/sport track.webp",
+            img: "/product-6.jpg",
             item: "Sport Track",
             price: "₹" + '850.00',
         },
         {
             id: 7,
-            img: "/sport tshirt.webp",
+            img: "/product-7.jpg",
             item: "Sport Tshirt",
             price: "₹" + '850.00',
         },
         {
             id: 8,
-            img: "/belt.webp",
+            img: "/product-8.jpg",
             item: "Belt",
             price: "₹" + '850.00',
         },
@@ -63,7 +63,7 @@ function ShopItem() {
                         {mb:5}
                     }>
 
-                        <Box className="shop-img">
+                        <Box className="shop-img" marginBottom={1}>
                             <img src={data.img} alt="img" />
                         </Box>
 
