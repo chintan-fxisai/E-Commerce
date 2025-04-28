@@ -3,8 +3,6 @@ import React from 'react'
 
 function Accordian({ pageName }) {
 
-
-
     return (
         <Box
             sx={{
@@ -29,7 +27,8 @@ function Accordian({ pageName }) {
                             textDecoration: 'none'
                         }}>Home</Link>
                     <Typography
-                    >Shop</Typography>
+                    >{pageName}</Typography>
+                    
                 </Breadcrumbs>
 
             </Container>

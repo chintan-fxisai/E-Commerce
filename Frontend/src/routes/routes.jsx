@@ -11,6 +11,7 @@ import Home from '../pages/Home/Home';
 import Shop from '../pages/Shop/Shop';
 import Blog from '../pages/Blog/Blog'
 import Contact from '../pages/Contact/Contact'
+import ProductDetail from '../pages/Shop/ProductDetail';
 
 function routes() {
     return (
@@ -50,11 +51,13 @@ function routes() {
                         </PrivateRoute>
                 }>
 
-                    <Route path='home' element={<Home/>}></Route>
-                    <Route path='shop' element={<Shop/>}></Route>
-                    {/* <Route path='pages' element={<Page/>}></Route> */}
-                    <Route path='blog' element={<Blog/>}></Route>
-                    <Route path='contact' element={<Contact/>}></Route>
+                    <Route path='home' element={<Home/>} />
+                    <Route path='shop' element={<Shop/>} />
+                    <Route path='/shop/:prod_id' element={<ProductDetail/>}/>
+                    
+                    {/* <Route path='pages' element={<Page/>} /> */}
+                    <Route path='blog' element={<Blog/>} />
+                    <Route path='contact' element={<Contact/>} />
 
                 </Route>
 
