@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 
 function ProductDetail() {
 
