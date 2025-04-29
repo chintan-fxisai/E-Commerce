@@ -8,6 +8,8 @@ import Breadcrumb from './../../components/Breadcrumb/Breadcrumb'
 import ShopItem from './ShopItem';
 import './Shop.css'
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { setSelectedProduct } from '../../redux/ProductDetailSlice';
 
 
 function Shop() {
@@ -56,11 +58,13 @@ function Shop() {
     }
   ]
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  function handleProductClick(prod_id){
+  function handleProductClick(data){
     console.log("Clicked")
-    navigate('/shop/'+ prod_id)
+    dispatch(setSelectedProduct(data))
+    navigate('/shop/'+ data.prod_id)
   } 
 
   return (
@@ -83,7 +87,7 @@ function Shop() {
                     Image={data.img_src}
                     ItemName={data.prod_name}
                     ItemPrice={data.prod_price}
-                    onClick={()=> handleProductClick(data.prod_id)}
+                    onClick={()=> handleProductClick(data)}
                   />
                 </Grid>
               )
