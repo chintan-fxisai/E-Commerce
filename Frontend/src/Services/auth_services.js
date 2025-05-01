@@ -1,4 +1,3 @@
-import axios from 'axios'
 import axioInstance from '../axiosInstanse'
 
 const Auth_endpoints = {

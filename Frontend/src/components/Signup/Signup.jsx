@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
-import { userRegister } from "../../Services/services";
+import { userRegister } from "../../Services/auth_services";
 import { useNavigate } from 'react-router-dom'
 import { Box, Container, Typography, TextField, Button, IconButton, CircularProgress } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';

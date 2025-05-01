@@ -17,14 +17,14 @@ function ProductDetail() {
                 <Box className="ptb-120">
                     <Grid container spacing={3}>
                         <Grid size={{ lg: 3 }}>
-                            <img src={selectedProduct.img_src} alt={selectedProduct.prod_name} style={{ width: '100%' }} />
+                            <img src={`http://127.0.0.1:8000${selectedProduct.image}`} alt={selectedProduct.name} style={{ width: '100%' }} />
                         </Grid>
                         <Grid size={{ lg: 9 }}>
-                            <Typography variant="h3" color="initial">{selectedProduct.prod_name}</Typography>
-                            <Typography variant="body1" color="initial" fontWeight={600}>{`Price: `}</Typography>
-                            <Typography variant="body1" color="initial" marginBottom={2}>{selectedProduct.prod_price}</Typography>
-                            <Typography variant="body1" color="initial" fontWeight={600}>{`Details: `}</Typography>
-                            <Typography variant="body2" color="initial">{`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odit optio, obcaecati libero illo alias laboriosam, harum voluptates sunt pariatur, animi vitae tempora. Dignissimos quia assumenda perspiciatis repellat dicta sint? `}</Typography>
+                            <Typography variant="h3" color="initial">{selectedProduct.name}</Typography>
+                            <Typography variant="body1" color="initial" fontWeight={600} style={{display:'inline'}}>{`Price: `}</Typography>
+                            <Typography variant="body1" color="initial" marginBottom={2} style={{display:'inline'}}>{selectedProduct.price}</Typography>
+                            <Typography variant="body1" color="initial" fontWeight={600} style={{marginTop:4}}>{`Details: `}</Typography>
+                            <Typography variant="body2" color="initial">{`${selectedProduct.description}`}</Typography>
 
                             <Box
                               sx={{

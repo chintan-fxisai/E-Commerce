@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import Accordian from '../../components/Breadcrumb/Breadcrumb'
 import { Box, Grid, Typography } from '@mui/material'
@@ -11,52 +11,13 @@ import { useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { setSelectedProduct } from '../../redux/ProductDetailSlice';
 
+import { allProducts } from '../../Services/product_services';
+
 
 function Shop() {
 
   const categoryItem = ["Jacket", "Shoe", "Bag", "Scarf"]
-  const data = [
-    { "prod_id":"1",
-      "img_src": "/product-1.jpg",
-      "prod_name": "Shoes",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"2",
-      "img_src": "/product-2.jpg",
-      "prod_name": "Shirts",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"3",
-      "img_src": "/product-3.jpg",
-      "prod_name": "Shoes",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"4",
-      "img_src": "/product-4.jpg",
-      "prod_name": "Jacket",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"5",
-      "img_src": "/product-5.jpg",
-      "prod_name": "T-Shirt",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"6",
-      "img_src": "/product-6.jpg",
-      "prod_name": "Scarf",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"7",
-      "img_src": "/product-7.jpg",
-      "prod_name": "Bag",
-      "prod_price": "Rs. 750/-"
-    },
-    { "prod_id":"8",
-      "img_src": "/product-8.jpg",
-      "prod_name": "Polo Tshirt",
-      "prod_price": "Rs. 750/-"
-    }
-  ]
+  const[products, setProducts] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -66,6 +27,18 @@ function Shop() {
     dispatch(setSelectedProduct(data))
     navigate('/shop/'+ data.prod_id)
   } 
+
+
+  useEffect(() => {
+    const fetch_data = async()=>{
+      const response = await allProducts();
+        
+      // console.log(response.data)
+      setProducts(response.data || [])
+    } 
+
+    fetch_data()
+  }, []);
 
   return (
     
@@ -80,25 +53,21 @@ function Shop() {
           </Grid>
           <Grid container size={{ lg: 9 }}>
 
-            {data.map((data) => {
+            {products.map((data) => {
               return (
-                <Grid size={{ lg: 4 }} key={data.prod_id}>
+                <Grid size={{ lg: 4 }} key={data.id}>
                   <ShopItem
-                    Image={data.img_src}
-                    ItemName={data.prod_name}
-                    ItemPrice={data.prod_price}
+                    Image={`http://127.0.0.1:8000${data.image}`}
+                    ItemName={data.name}
+                    ItemPrice={data.price}
                     onClick={()=> handleProductClick(data)}
                   />
                 </Grid>
               )
             })}
 
-
-
           </Grid>
         </Grid>
-
-
       </Container>
     </>
   )
