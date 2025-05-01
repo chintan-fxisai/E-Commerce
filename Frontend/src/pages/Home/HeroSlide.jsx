@@ -2,10 +2,14 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Button, Fade, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 
 function HeroSlide() {
+
+    
+  const navigate = useNavigate();
 
     const settings = {
         dots: true,
@@ -18,6 +22,11 @@ function HeroSlide() {
         fade: true,
 
     };
+
+    const handleShopNowClick = () => {
+        navigate('/shop'); 
+    };
+
     return (
         <div className="slider-container">
             <Slider {...settings}>
@@ -65,7 +74,9 @@ function HeroSlide() {
                                         letterSpacing: '5px',
                                         fontSize: 14,
                                         fontWeight: 600
-                                    }}>
+                                    }}
+                                    
+                                    onClick={handleShopNowClick}>
                                     SHOP NOW
                                 </Button>
                             </Box>

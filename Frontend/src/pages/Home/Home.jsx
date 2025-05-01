@@ -7,10 +7,10 @@ import HeroSlide from './HeroSlide';
 import CategoryItem from './CategoryItem'
 import ShopItem from './ShopItem';
 
+
 function Home() {
+
   return (
-
-
 
     <Container component='section' maxWidth="lg"
       sx={{
@@ -19,7 +19,7 @@ function Home() {
       }}>
 
       {/* Hero section */}
-      {<HeroSlide />}
+      {<HeroSlide/>}
 
 
       {/* Category Section */}
@@ -53,9 +53,11 @@ function Home() {
 
 
       {/* Shop Sections */}
-      <Box className='pb-120'>
+      <Box className='pb-120'
+      
+      >
           <Typography variant="h2" color="initial"
-          fontSize={40}>
+          fontSize={40} >
             Shop Now
           </Typography>
           <Typography sx={{mb:4}} variant="body1" color="initial">Have a look to our variety of product</Typography>

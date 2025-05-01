@@ -8,8 +8,8 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
-
+  
+<>
         <CssBaseline />
         <Provider store={store}>
             <App />
@@ -22,6 +22,7 @@ createRoot(document.getElementById('root')).render(
             closeOnClick={false}
             rtl={false}
             theme="colored" />
-    </StrictMode>
+            </>
+   
 
 )
