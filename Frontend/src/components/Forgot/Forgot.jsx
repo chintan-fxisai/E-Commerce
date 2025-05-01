@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Container, Button, Typography, TextField, CircularProgress } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { userForgot } from '../../Services/services';
+import { userForgot } from '../../Services/auth_services';
 import { useNavigate } from 'react-router-dom';
 
 function Forgot() {
