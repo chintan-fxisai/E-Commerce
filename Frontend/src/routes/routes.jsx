@@ -53,7 +53,7 @@ function routes() {
 
                     <Route path='home' element={<Home/>} />
                     <Route path='shop' element={<Shop/>} />
-                    <Route path='/shop/:prod_id' element={<ProductDetail/>}/>
+                    <Route path='/shop/:id' element={<ProductDetail/>}/>
                     
                     {/* <Route path='pages' element={<Page/>} /> */}
                     <Route path='blog' element={<Blog/>} />

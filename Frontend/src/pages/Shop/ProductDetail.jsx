@@ -29,13 +29,13 @@ function ProductDetail() {
                             <Box
                               sx={{
                                 display: 'flex',
-                                alignItems: 'center', // Align items vertically
-                                mt: 3, // Add margin-top for spacing
+                                alignItems: 'center',
+                                mt: 3,
                                 gap:2
                               }}
                             >
                               <Button
-                                variant="contained" // Fix typo: "Contained" -> "contained"
+                                variant="contained"
                                 sx={{
                                   bgcolor: "#dc3545",
                                   color: 'white',

@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Product, ProductImage, Category, subCategory
 from .serializers import ProductSerializer, ProductImageSerializer, CategorySerializer, SubCategorySerializer
+from rest_framework.pagination import PageNumberPagination
 
 # Create your views here.
 
@@ -21,11 +22,18 @@ class SubCategoryView(APIView):
         serializer = SubCategorySerializer(sub_category, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class ProductView(APIView):
+class customProductPagination(PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 5
+
+class ProductView(APIView, customProductPagination):
     def get(self, request, format=None):
         products = Product.objects.all()
-        product_serializer = ProductSerializer(products, many=True)
-        return Response(product_serializer.data, status=status.HTTP_200_OK)
+        paginator = customProductPagination()
+        paginated_data = paginator.paginate_queryset(products, request)
+        product_serializer = ProductSerializer(paginated_data, many=True)
+        return paginator.get_paginated_response(product_serializer.data)
 
 class ProductImageView(APIView):
     def get(self, request, format = None):

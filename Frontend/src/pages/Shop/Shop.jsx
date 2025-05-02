@@ -10,14 +10,16 @@ import './Shop.css'
 import { useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { setSelectedProduct } from '../../redux/ProductDetailSlice';
-
 import { allProducts } from '../../Services/product_services';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 
 function Shop() {
 
   const categoryItem = ["Jacket", "Shoe", "Bag", "Scarf"]
-  const[products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,20 +27,28 @@ function Shop() {
   function handleProductClick(data){
     console.log("Clicked")
     dispatch(setSelectedProduct(data))
-    navigate('/shop/'+ data.prod_id)
+    navigate('/shop/'+ data.id)
   } 
 
 
   useEffect(() => {
     const fetch_data = async()=>{
-      const response = await allProducts();
+      const response = await allProducts(currentPage);
+      console.log("carrying data from page: ", currentPage)
+      setProducts(response.data.results || [])
+      setTotalPages(Math.ceil(response.data.count / 5));
         
       // console.log(response.data)
-      setProducts(response.data || [])
     } 
-
     fetch_data()
-  }, []);
+  }, [currentPage]);
+
+
+  const handlePageChange = (page)=>{
+    setCurrentPage(page)
+  }
+
+
 
   return (
     
@@ -68,6 +78,12 @@ function Shop() {
 
           </Grid>
         </Grid>
+
+        <PaginationComponent
+        currentPage ={currentPage}
+        totalPages = {totalPages}
+        onPageChange={handlePageChange}
+        />
       </Container>
     </>
   )
