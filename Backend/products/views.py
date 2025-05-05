@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Product, ProductImage, Category, subCategory
 from .serializers import ProductSerializer, ProductImageSerializer, CategorySerializer, SubCategorySerializer
 from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 
 # Create your views here.
 
@@ -29,7 +30,19 @@ class customProductPagination(PageNumberPagination):
 
 class ProductView(APIView, customProductPagination):
     def get(self, request, format=None):
+        keyword = request.query_params.get('search', '')
         products = Product.objects.all()
+
+        if keyword:
+            products = products.filter(
+                Q(name__icontains=keyword) |
+                Q(description__icontains=keyword) |
+                Q(subcategory__name__icontains=keyword) |
+                Q(subcategory__description__icontains=keyword) |
+                Q(subcategory__category__name__icontains=keyword) |
+                Q(subcategory__category__description__icontains=keyword)
+            )
+
         paginator = customProductPagination()
         paginated_data = paginator.paginate_queryset(products, request)
         product_serializer = ProductSerializer(paginated_data, many=True)
@@ -39,4 +52,4 @@ class ProductImageView(APIView):
     def get(self, request, format = None):
         product_images = ProductImage.objects.all()
         serializer = ProductSerializer(product_images, many = True)
-        return Response(serializer.data,status=status.HTTP_200_OK)     
+        return Response(serializer.data,status=status.HTTP_200_OK)

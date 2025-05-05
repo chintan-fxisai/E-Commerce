@@ -6,7 +6,7 @@ function Accordian({ pageName }) {
     return (
         <Box
             sx={{
-                py: 5,
+                py: 7,
                 bgcolor: '#f3f2ee',
             }}>
 
