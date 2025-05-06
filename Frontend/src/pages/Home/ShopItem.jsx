@@ -58,16 +58,16 @@ function ShopItem() {
         <>
             {data.map((data) => {
                 return (
-                    <Grid key={data.id} item size={{ lg: 3 }} className="grid-shop-product"
+                    <Grid key={data.id} item size={{ lg: 3 }} className="grid-hshop-product"
                     sx={
                         {mb:5}
                     }>
 
-                        <Box className="shop-img" marginBottom={1}>
+                        <Box className="hshop-img" marginBottom={1}>
                             <img src={data.img} alt="img" />
                         </Box>
 
-                        <Box className="home-shop-product-text">
+                        <Box className="home-hshop-product-text">
                             <Typography variant="body1" color="initial"
                             sx={{
                                 fontSize:20,

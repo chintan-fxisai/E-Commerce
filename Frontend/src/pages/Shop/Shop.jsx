@@ -11,7 +11,6 @@ import { setSelectedProduct } from '../../redux/ProductDetailSlice';
 import { allProducts } from '../../Services/product_services';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 import SeachBox from './SearchComponent/SeachBox';
-import SearchIcon from '@mui/icons-material/Search';
 
 function Shop() {
 
@@ -52,7 +51,7 @@ function Shop() {
     <>
       <Breadcrumb pageName={"Shop"} />
 
-      <Container maxWidth="lg" sx={{ py: 13 }} >
+      <Container maxWidth="lg" sx={{ py: 6 }} >
 
 
         <Box sx={{ textAlign: 'right' }}>

@@ -40,21 +40,21 @@
     height: 2px;
 }
 
-.shop-img{
+.hshop-img{
     overflow: hidden;
     width: fit-content;
 }
 
-.shop-img img{
+.hshop-img img{
     width: 100%;
 }
 
-.grid-shop-product:hover .shop-img img{
+.grid-hshop-product:hover .hshop-img img{
     transform: scale(1.1,1.1);
     transition: .3s all ease;
 }
 
-.grid-shop-product:hover .home-shop-product-text p{
+.grid-hshop-product:hover .home-hshop-product-text p{
     transition: .3s all ease;
     color: #dc3545;
 }

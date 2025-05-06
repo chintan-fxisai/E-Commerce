@@ -12,17 +12,20 @@ function SeachBox({ setProducts, setTotalPages }) {
     };
 
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-            <TextField
-                id="outlined-basic"
-                label="Search"
-                variant="standard"
-                style={{ marginBottom: 20 }}
+        <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap:2 }}>
+            <input type="text" placeholder='Search'
                 onChange={(e) => setSearchText(e.target.value)}
-            />
+            style={{
+                height:'100%',
+                width:'50%',
+                padding:"6px 5px",
+                fontSize:18,
+                marginBottom:30,
+                backgroundColor:'#e8ebed',
+            }} />
             <Button
-                variant="text"
-                style={{ color: '#dc3545' }}
+                variant="contained"
+                style={{ color: '#fff' , backgroundColor:"#dc3545"}}
                 onClick={handleSearchClick}
             >
                 Search
