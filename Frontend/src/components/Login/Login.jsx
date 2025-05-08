@@ -1,52 +1,46 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-// import './Login.css'
-import { userLogin } from '../../Services/auth_services'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'; './loginSlice';
 import { Box, Container, Typography, TextField, Button, CircularProgress } from '@mui/material';
 import { IconButton } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import {toast} from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../redux/authActions';
+import { selectLoading, selectError } from '../../redux/loginSlice';
 
-
+/**
+ * The `store` object is exported as the default export.
+ * Ensure that `store` is properly defined and initialized before use.
+ */
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  // Get loading and error state from Redux store
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
-  const [passwordVisible, setPasswordVisible] = useState()
-  const [loading, setLoading] = useState(false)
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const handlePasswordVisibilityClick = () => setPasswordVisible(!passwordVisible)
+  const handlePasswordVisibilityClick = () => setPasswordVisible(!passwordVisible);
 
   const onSubmit = (data) => {
-    setLoading(true)
-    userLogin(data)
-
-    .then((res) => {
-      toast.success("Logging In!!!", {autoClose:800})
-
-        const token = res.data.token
-        localStorage.setItem("authToken", token.access)
-        localStorage.setItem("refreshToken", token.refresh)
-        
-        setTimeout(() => {
-          navigate("/home")
-        },1500)
-      })
-  }
+    // Dispatch login action with credentials and navigate function
+    dispatch(loginUser(data, navigate));
+  };
 
   return (
-
     <Box
-    sx={
-      {
-        height:"100%",
-        width:"100%",
-        bgcolor:'darkgrey'
-      }
+      sx={
+        {
+          height:"100%",
+          width:"100%",
+          bgcolor:'darkgrey'
+        }
 
-    }>
+      }>
       <Container component={'section'}
       sx={{
         display: "flex",
@@ -67,6 +61,12 @@ export default function Login() {
           textAlign: "center",
         }}>
         <Typography variant="h4" color="initial" fontWeight={600} marginBottom={3}>Login</Typography>
+
+        {error && (
+            <Typography color="error" sx={{ mb: 2 }}>
+              {error}
+            </Typography>
+          )}
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -144,19 +144,24 @@ export default function Login() {
             >Forgot Password?</Typography>
 
 
-          {loading ? <CircularProgress
-             size={"2.5rem"}/> :
-          <Button variant="contained" color="white"
-            type='submit'
-            sx={{
-              bgcolor: "green",
-              color: "whitesmoke",
-              mt: 3,
-              padding: "8px 50px"
-            }}>
-             Login
-          </Button>
-            }
+          <Button 
+              variant="contained" 
+              color="white"
+              type='submit'
+              disabled={loading}
+              sx={{
+                bgcolor: "green",
+                color: "whitesmoke",
+                mt: 3,
+                padding: "8px 50px"
+              }}
+            >
+              {loading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                "Login"
+              )}
+            </Button>
 
           <Typography variant="body1" color="grey" marginTop={2}
             sx={{
