@@ -1,81 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../redux/authActions';
-import { selectIsLoggedIn, selectUser } from '../../redux/loginSlice';
+import { selectIsLoggedIn } from '../../redux/loginSlice';
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { CircularProgress } from '@mui/material';
-import { Box, Stack,Typography } from '@mui/material';
+import { Avatar} from '@mui/material';
+import { Box, Stack } from '@mui/material';
+import Login from '../Login/Login';
 
 function Navbar() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
-  const [loading, setLoading] = React.useState(false);
+  const navigate = useNavigate();
+  const [showLogin, setShowLogin] = useState(false);
 
-  const handleLogoutClick = () => {
-    setLoading(true);
-    dispatch(logoutUser(navigate));
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  };
+  
+  const handleCloseLogin = () => {
+    setShowLogin(false);
   };
 
   return (
-    <AppBar 
-      position="fixed"
-      sx={{
-        py: 2,
-        color: "black",
-        bgcolor: "white"
-      }}
-    >
-      <Container maxWidth="lg">
-        <Toolbar 
-          disableGutters
-          sx={{
-            justifyContent: 'space-between'
-          }}
-        >
-          <Box sx={{ cursor: 'pointer' }}>
-            <img src="./../../logo.png" alt="img" />
-          </Box>
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          py: 2,
+          color: "black",
+          bgcolor: "white"
+        }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar
+            disableGutters
+            sx={{
+              justifyContent: 'space-between'
+            }}
+          >
+            <Box sx={{ cursor: 'pointer' }}>
+              <img src="./../../logo.png" alt="img" />
+            </Box>
 
-          <Stack spacing={5} direction={'row'}>
-            <NavLink className="navlink" to={"/home"}>Home</NavLink>
-            <NavLink className="navlink" to={"/shop"}>Shop</NavLink>
-            <NavLink className="navlink" to={"/blog"}>Blog</NavLink>
-            <NavLink className="navlink" to={"/contact"}>Contacts</NavLink>
-          </Stack>
+            <Stack spacing={5} direction={'row'}>
+              <NavLink className="navlink" to={"/home"}>Home</NavLink>
+              <NavLink className="navlink" to={"/shop"}>Shop</NavLink>
+              <NavLink className="navlink" to={"/blog"}>Blog</NavLink>
+              <NavLink className="navlink" to={"/contact"}>Contacts</NavLink>
+            </Stack>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            {isLoggedIn && user && (
-              <Typography variant="body1" sx={{ mr: 2 }}>
-                {user.email}
-              </Typography>
-            )}
-            
-            {loading ? (
-              <CircularProgress size={"2.5rem"} />
-            ) : (
+            {isLoggedIn ? <Avatar /> :
               <Button
                 variant="contained"
-                disableRipple
                 sx={{
-                  color: "white",
-                  bgcolor: "#dc3545"
+                  bgcolor:"#dc3545",
+                  color:"white"
                 }}
-                onClick={handleLogoutClick}
+                onClick={handleLoginClick}
               >
-                Logout
-              </Button>
-            )}
+                Login
+              </Button> 
+            }
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* Login Modal */}
+      {showLogin && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 1300,
+            backdropFilter: 'blur(5px)',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Box
+            sx={{
+              position: 'relative',
+              width: '450px', 
+              maxWidth: '90%'
+            }}
+          >
+            <Login closeLoginModal={handleCloseLogin} />
           </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+        </Box>
+      )}
+    </>
   );
 }
 

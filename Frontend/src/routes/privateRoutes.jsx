@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../redux/loginSlice';
 
@@ -8,7 +8,7 @@ function PrivateRoutes({ children }) {
   const access_token = localStorage.getItem("authToken");
 
   if (isLoggedIn && access_token) {
-    return children || <Outlet />;
+    return children;
   } else {
     return <Navigate to="/login" />;
   }

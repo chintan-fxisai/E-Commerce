@@ -1,6 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import PublicRoute from './publicRoute';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './privateRoutes';
 import Login from '../components/Login/Login'
 import Signup from '../components/Signup/Signup';
@@ -12,54 +11,60 @@ import Shop from '../pages/Shop/Shop';
 import Blog from '../pages/Blog/Blog'
 import Contact from '../pages/Contact/Contact'
 import ProductDetail from '../pages/Shop/ProductDetail';
+import Profile from '../pages/Profile/Profile'
+import Cart from '../pages/Cart/Cart'
 
 function routes() {
     return (
         <>
             <Routes>
-                <Route path="/" element={
-                    <PublicRoute>
-                        <Login />
-                    </PublicRoute>
-                } />
+                <Route path='/' element={
+                        <Layout />
+                }>
+                    <Route index element={<Navigate to="/home" />}></Route>
 
-                <Route path="/login" element={
-                    <PublicRoute>
-                        <Login />
-                    </PublicRoute>} />
+                    {
+                        /* or we can do this both are same */
+                        // <Route index element={<Navigate to="/home" />}></Route>
+                    }
+
+                    <Route path='home' element={<Home />} />
+                    <Route path='shop' element={<Shop />} />
+                    <Route path='/shop/:id' element={<ProductDetail />} />
+                    <Route path='blog' element={<Blog />} />
+                    <Route path='contact' element={<Contact />} />
+
+                    <Route path='profile' element={
+                        <PrivateRoute>
+                            <Profile />
+                        </PrivateRoute>} />
+
+                    <Route path='cart' element={
+                        <PrivateRoute>
+                            <Cart />
+                        </PrivateRoute>} />
+                </Route>
+
+
+
+                {/* <Route path="/login" element={
+
+                    <Login />
+                } /> */}
 
                 <Route path="/signup" element={
-                    <PublicRoute>
-                        <Signup />
-                    </PublicRoute>} />
+
+                    <Signup />
+                } />
 
                 <Route path="/reset-password" element={
-                    <PublicRoute>
-                        <Forgot />
-                    </PublicRoute>
+                    <Forgot />
                 } />
+
 
                 <Route path="/reset-password/:uid/:token" element={
-                    <PublicRoute>
-                        <ResetPassword />
-                    </PublicRoute>
+                    <ResetPassword />
                 } />
-
-                <Route path='/' element={
-                        <PrivateRoute>
-                            <Layout/>
-                        </PrivateRoute>
-                }>
-
-                    <Route path='home' element={<Home/>} />
-                    <Route path='shop' element={<Shop/>} />
-                    <Route path='/shop/:id' element={<ProductDetail/>}/>
-                    
-                    {/* <Route path='pages' element={<Page/>} /> */}
-                    <Route path='blog' element={<Blog/>} />
-                    <Route path='contact' element={<Contact/>} />
-
-                </Route>
 
             </Routes>
         </>
