@@ -70,7 +70,7 @@ function ShopItem({ Image, ItemName, ItemPrice, onClick }) {
                                     flexGrow: 1,
                                     transition: ".3s all ease",
                                     color: isHovering ? '#dc3545' : ''
-                                }}>{ItemPrice}
+                                }}>{`$${ItemPrice}`}
                             </Typography>
 
                             <IconButton className={'show-cart'}

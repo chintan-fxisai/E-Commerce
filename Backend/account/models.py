@@ -47,6 +47,13 @@ class User(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    firstName = models.CharField(max_length=50, blank=True)
+    lastName = models.CharField(max_length=50, blank=True)
+    contact = models.CharField(max_length=20, blank=True)
+    address = models.TextField(blank=True)
+    gender = models.CharField(max_length=10, choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], blank=True)
+    dateOfBirth = models.DateField(null=True, blank=True)
+
     objects = UserManager()
 
     USERNAME_FIELD = "email"

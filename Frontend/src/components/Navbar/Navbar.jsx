@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { NavLink, useNavigate} from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/loginSlice';
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
@@ -16,6 +16,13 @@ function Navbar() {
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
 
+  const user = useSelector(state => state.login?.user);
+  const userInitial =
+    (user?.firstName && user.firstName.charAt(0).toUpperCase()) ||
+    (user?.username && user.username.charAt(0).toUpperCase()) ||
+    '';
+  console.log(userInitial)
+
   const handleLoginClick = () => {
     setShowLogin(true);
   };
@@ -23,6 +30,10 @@ function Navbar() {
   const handleCloseLogin = () => {
     setShowLogin(false);
   };
+
+  const handleAvatarClick = ()=>{
+    navigate('/profile')
+  }
 
   return (
     <>
@@ -52,18 +63,29 @@ function Navbar() {
               <NavLink className="navlink" to={"/contact"}>Contacts</NavLink>
             </Stack>
 
-            {isLoggedIn ? <Avatar /> :
+            {isLoggedIn ? (
+              <Avatar
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: '#dc3535',
+                  color: 'white'
+                }}
+                onClick={handleAvatarClick}
+              >
+                {userInitial}
+              </Avatar>
+            ) : (
               <Button
                 variant="contained"
                 sx={{
-                  bgcolor:"#dc3545",
-                  color:"white"
+                  bgcolor: "#dc3545",
+                  color: "white"
                 }}
                 onClick={handleLoginClick}
               >
                 Login
               </Button> 
-            }
+            )}
           </Toolbar>
         </Container>
       </AppBar>

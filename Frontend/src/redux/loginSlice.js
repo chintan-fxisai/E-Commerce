@@ -15,11 +15,10 @@ const loginSlice = createSlice(
 
         reducers:{
 
-            loginStart: (state)=>{
+            loginStart: (state) => {
                 state.loading = true;
                 state.error = null;
             },
-
 
             loginSuccess: (state,action)=>{
                 state.isLoggedIn = true,

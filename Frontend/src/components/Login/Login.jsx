@@ -24,8 +24,7 @@ export default function Login({ closeLoginModal = () => {} }) {
   const handlePasswordVisibilityClick = () => setPasswordVisible(!passwordVisible);
 
   const onSubmit = (data) => {
-    // Dispatch login action with credentials and navigate function
-    dispatch(loginUser(data, navigate, closeLoginModal));
+    dispatch(loginUser(data, navigate, { closeLoginModal }));
   };
 
   return (

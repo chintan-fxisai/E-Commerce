@@ -48,7 +48,14 @@ class UserLoginSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'name']
+        fields = [
+            'firstName',
+            'lastName',
+            'contact',
+            'address',
+            'gender',
+            'dateOfBirth',
+        ]
 
 
 class UserSendPasswordResetEmailSerializer(serializers.Serializer):

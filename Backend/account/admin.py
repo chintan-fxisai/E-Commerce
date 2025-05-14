@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 # Register your models here.
 
 class UserModelAdmin(BaseUserAdmin):
-    list_display = ["email", "name","id", "is_admin"]
+    list_display = ["email","id", "is_admin", "firstName", "lastName", "contact","address","gender","dateOfBirth" ]
     list_filter = ["is_admin"]
     fieldsets = [
         ('User Credentials', {"fields": ["email", "password"]}),

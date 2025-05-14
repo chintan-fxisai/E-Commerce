@@ -20,4 +20,12 @@ export const userRegister = async(payload)=>{
     return response.data
 }
 
+export const updateProfile = async (payload) => {
+    const response = await axioInstance.put('profile/', payload);
+    return response.data;
+}
 
+export const getProfile = async () => {
+    const response = await axioInstance.get('profile/');
+    return response.data;
+}
