@@ -6,7 +6,7 @@ import { IconButton } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../redux/authActions';
+import { loginUser } from '../../redux/actions/authActions';
 import { selectLoading, selectError } from '../../redux/loginSlice';
 import CloseIcon from '@mui/icons-material/Close';
 

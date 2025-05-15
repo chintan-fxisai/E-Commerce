@@ -3,7 +3,7 @@ import Container from '@mui/material/Container'
 import { Box, Typography, TextField, Button, MenuItem, Grid, Avatar, Stack } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { logoutUser } from '../../redux/authActions'
+import { logoutUser } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux';
 import { updateProfile, getProfile } from '../../Services/auth_services' 
 import { toast } from 'react-toastify'

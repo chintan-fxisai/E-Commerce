@@ -1,5 +1,5 @@
-import { loginStart, loginSuccess, loginFail, logout } from './loginSlice';
-import { userLogin } from '../Services/auth_services';
+import { loginStart, loginSuccess, loginFail, logout } from '../loginSlice';
+import { userLogin } from '../../Services/auth_services';
 import { toast } from 'react-toastify';
 
 export const loginUser = (credentials, navigate, { closeLoginModal }) => async (dispatch) => {
