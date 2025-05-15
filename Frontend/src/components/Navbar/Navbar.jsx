@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import { NavLink, useNavigate} from 'react-router-dom';
-import {useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/loginSlice';
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { Avatar} from '@mui/material';
-import { Box, Stack } from '@mui/material';
+import { Avatar } from '@mui/material';
+import { Box, Stack, IconButton } from '@mui/material';
 import Login from '../Login/Login';
 
 function Navbar() {
@@ -26,13 +26,17 @@ function Navbar() {
   const handleLoginClick = () => {
     setShowLogin(true);
   };
-  
+
   const handleCloseLogin = () => {
     setShowLogin(false);
   };
 
-  const handleAvatarClick = ()=>{
+  const handleAvatarClick = () => {
     navigate('/profile')
+  }
+
+  const handleCartButtonClick = () => {
+    navigate('/cart')
   }
 
   return (
@@ -64,16 +68,27 @@ function Navbar() {
             </Stack>
 
             {isLoggedIn ? (
-              <Avatar
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: '#dc3535',
-                  color: 'white'
-                }}
-                onClick={handleAvatarClick}
-              >
-                {userInitial}
-              </Avatar>
+
+              <Box sx={{ display: 'flex', alignItems: 'center', gap:2 }}>
+
+                <Button variant="outlined" color="black" onClick={handleCartButtonClick}
+                sx={{
+                  px:1
+                }}>
+                  MY CART
+                </Button>
+
+                <Avatar
+                  style={{
+                    cursor: 'pointer',
+                    backgroundColor: '#dc3535',
+                    color: 'white'
+                  }}
+                  onClick={handleAvatarClick}
+                >
+                  {userInitial}
+                </Avatar>
+              </Box>
             ) : (
               <Button
                 variant="contained"
@@ -84,13 +99,12 @@ function Navbar() {
                 onClick={handleLoginClick}
               >
                 Login
-              </Button> 
+              </Button>
             )}
           </Toolbar>
         </Container>
       </AppBar>
 
-      {/* Login Modal */}
       {showLogin && (
         <Box
           sx={{
@@ -110,7 +124,7 @@ function Navbar() {
           <Box
             sx={{
               position: 'relative',
-              width: '450px', 
+              width: '450px',
               maxWidth: '90%'
             }}
           >

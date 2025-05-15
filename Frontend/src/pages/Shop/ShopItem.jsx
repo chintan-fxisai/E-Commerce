@@ -73,7 +73,7 @@ function ShopItem({ Image, ItemName, ItemPrice, onClick }) {
                                 }}>{`$${ItemPrice}`}
                             </Typography>
 
-                            <IconButton className={'show-cart'}
+                            {/* <IconButton 
                                 aria-label="cart"
                                 disableRipple
                                 sx={{
@@ -84,7 +84,7 @@ function ShopItem({ Image, ItemName, ItemPrice, onClick }) {
                                     sx={{
                                         width: 30,
                                     }} />
-                            </IconButton>
+                            </IconButton> */}
                         </Box>
                     </Box>
                 </Paper>

@@ -21,8 +21,8 @@ function ProductDetail() {
                         </Grid>
                         <Grid size={{ lg: 9 }}>
                             <Typography variant="h3" color="initial">{selectedProduct.name}</Typography>
-                            <Typography variant="body1" color="initial" fontWeight={600} style={{display:'inline'}}>{`Price: `}</Typography>
-                            <Typography variant="body1" color="initial" marginBottom={2} style={{display:'inline'}}>{selectedProduct.price}</Typography>
+                            <Typography variant="body1" color="initial" fontWeight={600} style={{display:'inline'}}>{`Price: $`}</Typography>
+                            <Typography variant="body1" color="initial" marginBottom={2} style={{display:'inline', fontWeight:600}}>{selectedProduct.price}</Typography>
                             <Typography variant="body1" color="initial" fontWeight={600} style={{marginTop:4}}>{`Details: `}</Typography>
                             <Typography variant="body2" color="initial">{`${selectedProduct.description}`}</Typography>
 
