@@ -5,7 +5,7 @@ from .models import CartItem,Cart
 from rest_framework.permissions import IsAuthenticated
 
 
-class CartSerializer
+
 
 
 
