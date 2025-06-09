@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Box, Container, Typography, TextField, Button, CircularProgress} from '@mui/material';
+import { Box, Container, Typography, TextField, Button, CircularProgress } from '@mui/material';
 import { IconButton } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -10,8 +10,8 @@ import { loginUser } from '../../redux/actions/authActions';
 import { selectLoading, selectError } from '../../redux/loginSlice';
 import CloseIcon from '@mui/icons-material/Close';
 
-// Update to accept closeLoginModal prop instead of showLogin
-export default function Login({ closeLoginModal = () => {} }) {
+
+export default function Login({ closeLoginModal = () => { },setShowSignup, showSignUp } ) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -169,9 +169,11 @@ export default function Login({ closeLoginModal = () => {} }) {
               cursor: "pointer"
             }}
 
-            onClick={() => navigate("/signup")}
+            onClick={() => {
+              closeLoginModal()
+              setShowSignup(!showSignUp)
+            }}
           >
-
             Don't have an account?
           </Typography>
         </form>

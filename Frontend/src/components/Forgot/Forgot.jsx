@@ -17,7 +17,7 @@ function Forgot() {
             const response = await userForgot(data);
             toast.success(response.data.msg,{autoClose:2000});
 
-            setTimeout(navigate("/login"),2000)
+            setTimeout(navigate("/home"),2000)
 
         } catch (error) {
             toast.error(error.response?.data?.msg || 'Something went wrong!');

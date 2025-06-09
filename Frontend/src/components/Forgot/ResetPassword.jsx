@@ -19,7 +19,7 @@ function ResetPassword() {
             toast.success(response.data.msg, {autoClose:2000});
 
             setTimeout(()=>{
-                navigate('/login');
+                navigate('/home');
             },2000)
 
             

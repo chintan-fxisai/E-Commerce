@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { userRegister } from "../../Services/auth_services";
 import { useNavigate } from 'react-router-dom'
-import { Box, Container, Typography, TextField, Button, IconButton, CircularProgress } from '@mui/material';
+import { Box, Typography, TextField, Button, IconButton, CircularProgress } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import CloseIcon from '@mui/icons-material/Close';
 
-
-
-function Signup() {
+function Signup({setShowSignup, showSignUp, setShowLogin}) {
 
   const [passwordVisible, setPasswordVisible] = useState()
   const [loading, setLoading] = useState(false)
@@ -32,41 +31,40 @@ function Signup() {
       })
   }
 
-  const handleHaveAccountClick = () => {
-    navigate("/login")
+  const handleHaveAccountClick = ()=>{
+    setShowSignup(!showSignUp)
+    setShowLogin(true)
   }
 
   const handlePasswordVisibilityClick = () => setPasswordVisible(!passwordVisible)
 
-
-
   return (
-
-   <Box
-   sx={{
-    height:"100%",
-    width:"100%",
-    bgcolor:"darkgrey"
-   }}>
-    
-     <Container component={'section'}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%"
-      }}>
-
-      <Box // Box containing the form
+      <Box 
         sx={{
           bgcolor: "whitesmoke",
           borderRadius: 2,
-          boxShadow: "0px 0px 10px 0px black",
           padding: 4,
-          width: "30%",
           textAlign: "center",
         }}>
+          
+          <IconButton
+          onClick={()=>{setShowSignup(false)}}
+          sx={{
+            position: 'absolute',
+            right: '1rem',
+            top: '1rem',
+            color: 'white',
+            zIndex: 1400,
+            padding: 0,
+            bgcolor: 'rgba(0, 128, 0, 1)',
+            '&:hover': {
+              bgcolor: 'rgba(0, 128, 0, 0.8)',
+            }
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
         <Typography variant="h4"
           color="initial"
           fontWeight={600}
@@ -203,9 +201,6 @@ function Signup() {
         </form>
 
       </Box>
-    </Container>
-   </Box>
-
   )
 }
 
