@@ -45,7 +45,7 @@ function Shop() {
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
-  
+
   return (
 
     <>
@@ -66,19 +66,19 @@ function Shop() {
           <Grid container size={{ lg: 9 }}>
 
             {products.length === 0 ? <Typography variant="body1" color="initial" textAlign={'center'}> No Data Available!!</Typography> :
-            
-            products.map((data) => {
-              return (
-                <Grid size={{ lg: 4 }} key={data.id}>
-                  <ShopItem
-                    Image={`http://127.0.0.1:8000${data.image}`}
-                    ItemName={data.name}
-                    ItemPrice={data.price}
-                    onClick={() => handleProductClick(data)}
-                  />
-                </Grid>
-              )
-            })}
+
+              products.map((data) => {
+                return (
+                  <Grid size={{ lg: 4 }} key={data.id}>
+                    <ShopItem
+                      Image={`http://127.0.0.1:8000${data.image}`}
+                      ItemName={data.name}
+                      ItemPrice={data.price}
+                      onClick={() => handleProductClick(data)}
+                    />
+                  </Grid>
+                )
+              })}
 
           </Grid>
         </Grid>

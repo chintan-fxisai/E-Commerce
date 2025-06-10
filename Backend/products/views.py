@@ -11,11 +11,11 @@ from django.db.models import Q
 
 
 class CategoryView(APIView):
-    def get(self, request, format =None):
+    def get(self, request, format=None):
         category = Category.objects.all()
         serializer = CategorySerializer(category, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
 
 class SubCategoryView(APIView):
     def get(self, request, format=None):
@@ -23,10 +23,12 @@ class SubCategoryView(APIView):
         serializer = SubCategorySerializer(sub_category, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
 class customProductPagination(PageNumberPagination):
     page_size = 5
     page_size_query_param = 'page_size'
     max_page_size = 5
+
 
 class ProductView(APIView, customProductPagination):
     def get(self, request, format=None):
@@ -48,8 +50,9 @@ class ProductView(APIView, customProductPagination):
         product_serializer = ProductSerializer(paginated_data, many=True)
         return paginator.get_paginated_response(product_serializer.data)
 
+
 class ProductImageView(APIView):
-    def get(self, request, format = None):
+    def get(self, request, format=None):
         product_images = ProductImage.objects.all()
-        serializer = ProductSerializer(product_images, many = True)
-        return Response(serializer.data,status=status.HTTP_200_OK)
+        serializer = ProductSerializer(product_images, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

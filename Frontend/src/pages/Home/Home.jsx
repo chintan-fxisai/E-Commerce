@@ -19,7 +19,7 @@ function Home() {
       }}>
 
       {/* Hero section */}
-      {<HeroSlide/>}
+      {<HeroSlide />}
 
 
       {/* Category Section */}
@@ -54,20 +54,17 @@ function Home() {
 
       {/* Shop Sections */}
       <Box className='pb-120'
-      
       >
-          <Typography variant="h2" color="initial"
+        <Typography variant="h2" color="initial"
           fontSize={40} >
-            Shop Now
-          </Typography>
-          <Typography sx={{mb:4}} variant="body1" color="initial">Have a look to our variety of product</Typography>
-          
-          <Grid container spacing={3}>
-            {<ShopItem/>}
-          </Grid>
+          Shop Now
+        </Typography>
+        <Typography sx={{ mb: 4 }} variant="body1" color="initial">Have a look to our variety of product</Typography>
+
+        <Grid container spacing={3}>
+          {<ShopItem />}
+        </Grid>
       </Box>
-
-
     </Container>
 
 

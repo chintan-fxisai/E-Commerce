@@ -19,7 +19,7 @@ function routes() {
         <>
             <Routes>
                 <Route path='/' element={
-                        <Layout />
+                    <Layout />
                 }>
                     <Route index element={<Navigate to="/home" />}></Route>
 
@@ -29,7 +29,7 @@ function routes() {
                     }
 
                     <Route path='home' element={<Home />} />
-                    <Route path='shop' element={<Shop />} />
+                    <Route path='/shop' element={<Shop />} />
                     <Route path='/shop/:id' element={<ProductDetail />} />
                     <Route path='blog' element={<Blog />} />
                     <Route path='contact' element={<Contact />} />
