@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import HeroSlide from './HeroSlide';
 import CategoryItem from './CategoryItem'
 import ShopItem from './ShopItem';
+import { HomeHero } from './HomeHero';
 
 
 function Home() {
@@ -17,6 +18,9 @@ function Home() {
         pt: 5,
         mt: 15
       }}>
+
+      {/* {New Hero}
+      <HomeHero /> */}
 
       {/* Hero section */}
       {<HeroSlide />}

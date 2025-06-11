@@ -8,9 +8,10 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Avatar } from '@mui/material';
-import { Box, Stack, IconButton } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function Navbar() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -41,9 +42,9 @@ function Navbar() {
     navigate('/cart');
   }
 
-  const handleDontHaveAccountClick = () => {
-    setShowSignup(true);
-  }
+  // const handleDontHaveAccountClick = () => {
+  //   setShowSignup(true);
+  // }
 
   return (
     <>
@@ -63,12 +64,31 @@ function Navbar() {
             }}
           >
             <Box sx={{ cursor: 'pointer' }}>
-              <img src="./../../logo.png" alt="img" />
+              <Typography variant="body1" color="initial"
+                sx={{
+                  fontFamily: "Rubik Mono One",
+                  fontSize: '32px'
+                }}>
+                SHOP.CO
+              </Typography>
             </Box>
 
             <Stack spacing={5} direction={'row'}>
               <NavLink className="navlink" to={"/home"}>Home</NavLink>
-              <NavLink className="navlink" to={"/shop"}>Shop</NavLink>
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                onClick={() => { }}
+
+
+                <NavLink className="navlink" to={"/shop"}>Shop
+                </NavLink>
+                <KeyboardArrowDownIcon />
+              </Box>
+
               <NavLink className="navlink" to={"/blog"}>Blog</NavLink>
               <NavLink className="navlink" to={"/contact"}>Contacts</NavLink>
             </Stack>
@@ -140,31 +160,31 @@ function Navbar() {
       )}
 
       {showSignUp && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 1300,
+            backdropFilter: 'blur(5px)',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <Box
             sx={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              zIndex: 1300,
-              backdropFilter: 'blur(5px)',
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
+              position: 'relative',
+              width: '450px',
+              maxWidth: '90%'
             }}
           >
-            <Box
-              sx={{
-                position: 'relative',
-                width: '450px',
-                maxWidth: '90%'
-              }}
-            >
-              <Signup setShowSignup={setShowSignup} showSignUp={showSignUp} setShowLogin={setShowLogin}/>
-            </Box>
+            <Signup setShowSignup={setShowSignup} showSignUp={showSignUp} setShowLogin={setShowLogin} />
           </Box>
+        </Box>
       )
       }
 
