@@ -1,5 +1,5 @@
 .navlink{
-    font-size: 18px;
+    font-size: 16px;
     color: rgb(17, 17, 17);
     display: block;
     position: relative;
@@ -22,4 +22,8 @@
 .navlink:active::after{
     width: 100%;
     transition: .5s all ease;
+}
+
+.shop-menu-item:hover{
+    
 }

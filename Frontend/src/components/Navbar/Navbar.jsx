@@ -12,6 +12,8 @@ import { Box, Stack, Typography } from '@mui/material';
 import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { SignupOffer } from './SignupOffer';
+import { ShopSubmenu } from './ShopSubmenu';
 
 function Navbar() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -19,6 +21,8 @@ function Navbar() {
 
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignup] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false)
+  const [showTopOffer, setShowTopOffer] = useState(true)
 
   const user = useSelector(state => state.login?.user);
   const userInitial =
@@ -42,20 +46,27 @@ function Navbar() {
     navigate('/cart');
   }
 
-  // const handleDontHaveAccountClick = () => {
-  //   setShowSignup(true);
-  // }
+  const handleDontHaveAccountClick = () => {
+    setShowSignup(true);
+  }
+
+  const handleShopMenuClick = () => {
+    setShopOpen(!shopOpen)
+    console.log(shopOpen)
+  }
 
   return (
     <>
       <AppBar
-        position="fixed"
+
         sx={{
-          py: 2,
+          pb: 1,
           color: "black",
-          bgcolor: "white"
+          bgcolor: "white",
+          boxShadow: 'none'
         }}
       >
+        <SignupOffer setShowSignUp={setShowSignup} showTopOffer={showTopOffer} setShowTopOffer={setShowTopOffer} />
         <Container maxWidth="lg">
           <Toolbar
             disableGutters
@@ -80,13 +91,23 @@ function Navbar() {
                 sx={{
                   display: 'flex',
                   alignItems: 'center'
-                }}>
-                onClick={() => { }}
+                }}
 
-
-                <NavLink className="navlink" to={"/shop"}>Shop
+                onClick={() => { handleShopMenuClick() }}
+              >
+                <NavLink className="navlink" to={"/shop"} >Shop
                 </NavLink>
-                <KeyboardArrowDownIcon />
+
+
+
+                <KeyboardArrowDownIcon
+                  sx={{
+                    display: 'inline-block',
+                    transform: shopOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: '0.3s all ease'
+                  }} />
+
+                <ShopSubmenu />
               </Box>
 
               <NavLink className="navlink" to={"/blog"}>Blog</NavLink>
